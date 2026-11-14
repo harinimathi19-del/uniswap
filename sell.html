@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sell - UniSwap</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="form-box">
+    <h2>Sell Your Item 💰</h2>
+    <form id="sellForm">
+      <input id="title" placeholder="Product name" required>
+      <select id="category"></select>
+      <select id="condition">
+        <option>Like New</option><option>Good</option><option>Fair</option>
+      </select>
+      <input id="mrp" type="number" placeholder="Original price (₹)" required>
+      <input id="price" type="number" placeholder="Your selling price (₹)" required>
+      <input id="college" placeholder="College name" required>
+      <input id="place" placeholder="City / Place" required>
+      <input id="phone" placeholder="Phone number" required>
+      <input id="email" type="email" placeholder="Email" required>
+      <textarea id="desc" rows="3" placeholder="Describe the item"></textarea>
+      <label>Add a photo:</label>
+      <input id="image" type="file" accept="image/*">
+      <button class="btn btn-full">Publish Item</button>
+    </form>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/sell.js"></script>
+</body>
+</html>

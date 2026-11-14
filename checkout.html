@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout - UniSwap</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="form-box">
+    <h2>Checkout</h2>
+    <div id="sum" class="summary" style="margin-bottom:16px;max-width:none"></div>
+    <form id="checkoutForm">
+      <input id="cName" placeholder="Your name" required>
+      <input id="cPhone" placeholder="Phone number" required>
+      <input id="cPlace" placeholder="Meeting place (college / hostel)" required>
+      <select id="cPay">
+        <option>Pay cash when meeting</option>
+        <option>Pay by UPI when meeting</option>
+      </select>
+      <button class="btn btn-full">Place Order</button>
+    </form>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    if (!getUser()) { alert("Please login first"); location.href = "login.html"; }
+
+    const items = getCart().map(c => ({ ...getProductById(c.id), qty: c.qty })).filter(i => i.id);
+    if (items.length === 0) location.href = "cart.html";
+
+    const total = items.reduce((s, i) => s + i.price * i.qty, 0);
+    document.getElementById("sum").innerHTML =
+      items.map(i => `<p><span>${i.title} × ${i.qty}</span><span>₹${i.price * i.qty}</span></p>`).join("") +
+      `<hr><p><b>Total</b><b>₹${total}</b></p>`;
+
+    document.getElementById("checkoutForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      placeOrder({
+        name: cName.value, phone: cPhone.value,
+        place: cPlace.value, pay: cPay.value
+      });
+      alert("Order placed successfully! 🎉");
+      location.href = "orders.html";
+    });
+  </script>
+</body>
+</html>

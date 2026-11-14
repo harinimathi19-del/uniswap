@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact - UniSwap</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container section">
+    <h2>Frequently Asked <span>Questions</span></h2>
+    <div class="info-box"><b>How do I buy an item?</b><br>Add it to the cart, checkout, then meet the seller on campus.</div>
+    <div class="info-box"><b>How do I sell?</b><br>Login, click Sell, fill the form and add a photo.</div>
+    <div class="info-box"><b>Is delivery free?</b><br>Yes. Buyer and seller meet at college.</div>
+  </div>
+
+  <div class="form-box">
+    <h2>Contact Us ✉️</h2>
+    <form id="contactForm">
+      <input placeholder="Your name" required>
+      <input type="email" placeholder="Your email" required>
+      <textarea rows="4" placeholder="Your message" required></textarea>
+      <button class="btn btn-full">Send Message</button>
+    </form>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      showToast("Message sent! We will reply soon 💚");
+      this.reset();
+    });
+  </script>
+</body>
+</html>

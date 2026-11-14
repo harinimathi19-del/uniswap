@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile - UniSwap</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container section">
+    <div class="info-box" id="userBox"></div>
+
+    <div class="section">
+      <h2>My <span>Listings</span></h2>
+      <div class="grid" id="myItems"></div>
+    </div>
+
+    <div class="section">
+      <h2>My <span>Wishlist</span> ❤️</h2>
+      <div class="grid" id="wishItems"></div>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    const user = getUser();
+    if (!user) { location.href = "login.html"; }
+
+    document.getElementById("userBox").innerHTML = `
+      <h2>👤 ${user.name}</h2>
+      <p>${user.email}</p>
+      <p>${user.college || ""}</p>
+      <br><button class="btn" onclick="logout()">Logout</button>`;
+
+    document.getElementById("myItems").innerHTML =
+      getProducts().filter(p => p.seller === user.name).map(cardHtml).join("")
+      || "<p>You have not listed anything yet.</p>";
+
+    document.getElementById("wishItems").innerHTML =
+      getProducts().filter(p => getWishlist().includes(p.id)).map(cardHtml).join("")
+      || "<p>Your wishlist is empty.</p>";
+  </script>
+</body>
+</html>

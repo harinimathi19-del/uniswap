@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login - UniSwap</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="form-box">
+    <h2>Welcome to UniSwap 👋</h2>
+    <form id="loginForm">
+      <input id="name" placeholder="Your name" required>
+      <input id="email" type="email" placeholder="College email" required>
+      <input id="college" placeholder="College name" required>
+      <button class="btn btn-full">Login / Register</button>
+    </form>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      setUser({
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        college: document.getElementById("college").value
+      });
+      location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
